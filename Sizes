@@ -1,0 +1,27 @@
+package com.company;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// read in measurements file using file reader
+        try {
+        File measurements = new File("C:\\Users\\User\\Documents\\Code\\measurements.csv");
+            //using Scanner to read the file because it uses whitespace which includes tabe, as a deliminator
+            Scanner sc = new Scanner(measurements);
+            while(sc.hasNextLine()) {
+//reads the file and prints it out
+                System.out.println(sc.nextLine());
+            }
+            sc.close();
+
+    } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+
+        }
+}
+//next need to pass the read in valuies into an array
