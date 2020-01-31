@@ -8,15 +8,24 @@ public class Main {
 
     public static void main(String[] args) {
 	// read in measurements file using file reader
-        try {
-        File measurements = new File("C:\\Users\\User\\Documents\\Code\\measurements.csv");
-            //using Scanner to read the file because it uses whitespace which includes tabe, as a deliminator
-            Scanner sc = new Scanner(measurements);
-            while(sc.hasNextLine()) {
-//reads the file and prints it out
-                System.out.println(sc.nextLine());
-            }
-            sc.close();
+       try {
+                    File measurements = new File("C:\\Users\\User\\Documents\\Code\\measurements.csv");
+                    //using Scanner to read the file
+                    Scanner sc = new Scanner(measurements);
+                   ArrayList<String> measures = new ArrayList<>(); //Array list was not the right option, created several arrays
+                   //read out as a string, need it split into brands and individual measurements.
+                    while(sc.hasNext()) {
+                        String sizes = sc.next(); //prints all values
+                       // System.out.println(sizes); //would print all data
+
+                       /* if we wanted to pull out one value, which  could be useful for checking if just one size measurement falls
+                        outside the range of measurements for a size.
+                        */
+                        String[] values = sizes.split(","); //splitting the string on comma
+                        System.out.println(values[1]);
+
+                    }
+                    sc.close();
 
     } catch (FileNotFoundException e) {
             System.out.println("File not found");
