@@ -1,0 +1,25 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Dress {
+    int bust;
+    int waist;
+    int hip;
+
+   // Dress bodycon = new Dress();
+    static void getUserInput() {
+        Scanner getInput = new Scanner(System.in);  //reads from system.in
+        System.out.println("Enter your bust, waist and hip measurements: ");
+        int b = getInput.nextInt(); //scans next token of input as int
+        int w = getInput.nextInt();
+        int h = getInput.nextInt();
+        getInput.close();
+        System.out.println("You have entered: " + b + " as your bust measurement");
+        System.out.println("You have entered: " + w + " as your waist measurement");
+        System.out.println("You have entered: " + h + " as your hip measurement");
+    }
+
+
+   }
+
