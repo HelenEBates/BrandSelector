@@ -1,0 +1,79 @@
+package com.company;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class readfile {
+    Scanner sc;
+
+    public void openFIle() {
+
+        // read in measurements file using file reader
+        try {
+            File measurements = new File("C:\\Users\\User\\Documents\\Code\\measurements.csv");
+            //using Scanner to read the file
+            sc = new Scanner(measurements);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+    }
+
+    public ArrayList<Brand> readCSV() {
+        String line = sc.nextLine();
+        ArrayList<Brand> brands = new ArrayList<>(); //create ArrayList to store the brands, ie rows of data
+        //while there is another line
+        try {
+            while (line != null) {
+                String[] sizes = line.split(",");  //string array , splitting on comma
+                Double bust = Double.parseDouble(sizes[0]);
+                Double waist = Double.parseDouble(sizes[1]);
+                Double hips = Double.parseDouble(sizes[2]); //parseDouble returns a new double initialized to the value repres by the string
+
+                line = sc.nextLine(); //prevents endless loop
+
+                System.out.println("bust " + bust + " waist " + waist + " hips " + hips); //would print all data
+                //instantiate brand object
+                Brand brandObj = new Brand(bust, waist, hips); //gets the values from the array in the object
+                brands.add(brandObj); //add() to arrayList
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return brands;
+
+    }
+
+
+    public void closeFile() {
+        sc.close();
+    }
+
+
+}
+/*
+    buffered reader
+    an alternative
+    to scanner
+    class
+
+    public void readFile(String fileName) {
+        try {
+            FileReader fr = new FileReader(FileName);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] sizes = line.split(",");
+                Double bust = Double.parseDouble(sizes[0]);
+                Double waist = Double.parseDouble(sizes[1]);
+                Double hips = Double.parseDouble(sizes[2]);
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+ */
